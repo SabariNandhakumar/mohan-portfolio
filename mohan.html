@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohan — MBBS Student | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0f1729;
+      --muted: #5c6578;
+      --paper: #fafbfc;
+      --card: #ffffff;
+      --accent: #0d4f4f;
+      --accent-soft: #e8f4f3;
+      --gold: #c9a227;
+      --border: rgba(15, 23, 41, 0.08);
+      --shadow: 0 24px 48px -12px rgba(15, 23, 41, 0.12);
+      --radius: 20px;
+      --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+      --font-display: "Instrument Serif", Georgia, serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(13, 79, 79, 0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 0%, rgba(201, 162, 39, 0.06), transparent);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(250, 251, 252, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      nav ul {
+        gap: 16px;
+      }
+      nav a {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-copy {
+        order: 2;
+      }
+      .hero-visual {
+        order: 1;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .credentials {
+        justify-content: center;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.75rem, 5vw, 3.75rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 0 0 20px;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .lead {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 0 28px;
+    }
+
+    @media (max-width: 900px) {
+      .lead {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 26px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(13, 79, 79, 0.35);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 12px 32px rgba(13, 79, 79, 0.4);
+    }
+
+    .btn-ghost {
+      background: var(--card);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .cred {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .cred strong {
+      color: var(--ink);
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .cred-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+    }
+
+    /* Photo frame */
+    .hero-visual {
+      position: relative;
+    }
+
+    .photo-ring {
+      position: absolute;
+      inset: -8px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--accent), rgba(201, 162, 39, 0.6));
+      opacity: 0.35;
+      filter: blur(20px);
+      z-index: 0;
+    }
+
+    .photo-card {
+      position: relative;
+      z-index: 1;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .photo-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-radius: 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .photo-badge small {
+      display: block;
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-top: 2px;
+    }
+
+    /* Sections */
+    section {
+      padding: 72px 0;
+    }
+
+    section:nth-child(even) {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .section-head {
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3vw, 2.5rem);
+      font-weight: 400;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .prose p {
+      margin: 0 0 1em;
+      color: var(--muted);
+    }
+
+    .prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 500px) {
+      .stat-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat {
+      background: var(--card);
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .stat b {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: rgba(13, 79, 79, 0.25);
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    /* Timeline */
+    .timeline {
+      border-left: 2px solid var(--border);
+      margin-left: 12px;
+      padding-left: 32px;
+    }
+
+    .tl-item {
+      position: relative;
+      padding-bottom: 32px;
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -39px;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 3px solid var(--accent);
+    }
+
+    .tl-item h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .tl-item .meta {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .tl-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Contact */
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      background: linear-gradient(135deg, var(--accent) 0%, #0a3d3d 100%);
+      color: #fff;
+      padding: 48px;
+      border-radius: 24px;
+      box-shadow: 0 24px 48px rgba(13, 79, 79, 0.3);
+    }
+
+    @media (max-width: 700px) {
+      .contact-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .contact-box .btn {
+        width: 100%;
+      }
+    }
+
+    .contact-box h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 400;
+      margin: 0 0 12px;
+    }
+
+    .contact-box p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 1rem;
+    }
+
+    .contact-box .btn-primary {
+      background: #fff;
+      color: var(--accent);
+      box-shadow: none;
+    }
+
+    .contact-box .btn-primary:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    footer {
+      padding: 32px 0 48px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="logo">Mohan<span>.</span></div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#focus">Focus</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Medical student</p>
+          <h1>Dedicated to healing, <em>grounded</em> in science.</h1>
+          <p class="lead">
+            I am Mohan, a second-year MBBS student building a strong foundation in basic medical sciences and clinical reasoning—committed to compassionate, evidence-based care.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Get in touch</a>
+            <a class="btn btn-ghost" href="#about">Read my story</a>
+          </div>
+          <div class="credentials">
+            <div class="cred">
+              <div class="cred-icon" aria-hidden="true">🩺</div>
+              <div>
+                <strong>MBBS</strong>
+                Year 2 · In progress
+              </div>
+            </div>
+            <div class="cred">
+              <div class="cred-icon" aria-hidden="true">📚</div>
+              <div>
+                <strong>Pre-clinical</strong>
+                Anatomy · Physiology · Biochemistry
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="photo-ring" aria-hidden="true"></div>
+          <div class="photo-card">
+            <img
+              src="./assets/mohan-portrait.png"
+              alt="Portrait of Mohan in a white lab coat with a stethoscope"
+              width="600"
+              height="800"
+            />
+            <div class="photo-badge">
+              Mohan
+              <small>Second-year MBBS · Medical student</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>About me</h2>
+          <p>Medicine is where curiosity meets responsibility. Here is how I approach the path.</p>
+        </div>
+        <div class="about-grid">
+          <div class="prose">
+            <p>
+              From the first dissection hall to late-night revision for university exams, MBBS has shaped how I think: systematically, patiently, and always with the patient at the centre. In my second year, I am deepening my grasp of how the human body works at every level—so that clinical years feel like a natural next step, not a leap.
+            </p>
+            <p>
+              I value clear communication, ethical practice, and lifelong learning. Outside structured coursework, I enjoy staying current with medical literature, peer discussions, and activities that keep empathy and teamwork sharp.
+            </p>
+          </div>
+          <div class="stat-row">
+            <div class="stat">
+              <b>2nd</b>
+              <span>Year MBBS</span>
+            </div>
+            <div class="stat">
+              <b>∞</b>
+              <span>Love for learning</span>
+            </div>
+            <div class="stat">
+              <b>1</b>
+              <span>Mission: better care</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Academic journey</h2>
+          <p>A concise map of where I am on the road to becoming a physician.</p>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <h3>Foundation &amp; admission</h3>
+            <div class="meta">Pre-medical preparation</div>
+            <p>Strong focus on biology, chemistry, and physics; competitive entrance preparation and selection into MBBS.</p>
+          </div>
+          <div class="tl-item">
+            <h3>First year MBBS</h3>
+            <div class="meta">Year 1 · Completed</div>
+            <p>Introduction to medical professionalism, community medicine concepts, and early integration with basic sciences and clinical exposure.</p>
+          </div>
+          <div class="tl-item">
+            <h3>Second year MBBS</h3>
+            <div class="meta">Year 2 · Current</div>
+            <p>Intensive study of anatomy, physiology, and biochemistry—building the physiological and molecular basis for disease and treatment in the years ahead.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="focus">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Current focus</h2>
+          <p>Skills and themes I am actively developing alongside my degree.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🧠</div>
+            <h3>Clinical reasoning</h3>
+            <p>Linking signs, symptoms, and mechanisms so that textbook knowledge translates into real-world thinking.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🔬</div>
+            <h3>Evidence-based habit</h3>
+            <p>Reading summaries and guidelines critically—knowing when to trust consensus and when to ask better questions.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🤝</div>
+            <h3>Professional presence</h3>
+            <p>Clear communication, respect for patients and teams, and the habits that make a trustworthy doctor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div>
+            <h2>Let’s connect</h2>
+            <p>Open to academic collaborations, study groups, mentorship conversations, and meaningful opportunities in medicine and public health.</p>
+          </div>
+          <div>
+            <a class="btn btn-primary" href="mailto:hello@mohan.example">Email me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© <span id="y"></span> Mohan · MBBS portfolio · Crafted with care</p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
